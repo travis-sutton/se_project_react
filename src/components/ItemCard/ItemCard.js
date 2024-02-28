@@ -1,3 +1,5 @@
+import "./ItemCard.css";
+
 const itemCardArray = [
   {
     _id: 0,

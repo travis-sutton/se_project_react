@@ -1,3 +1,5 @@
+import "./ItemModal.css";
+
 import closeButtonImage from "../../images/modal-close-button-transparent.png";
 
 const ItemModal = ({ selectedCard, onClose }) => {
