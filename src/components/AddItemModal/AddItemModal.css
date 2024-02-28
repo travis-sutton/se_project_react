@@ -1,0 +1,30 @@
+.add__item__modal-input_label {
+  display: block;
+  margin-top: 24px;
+}
+
+.add__item__modal-input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 100%;
+  outline: none;
+
+  margin-top: 8px;
+}
+
+p {
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+
+.add__item__modal-radio {
+  margin: 8px 11px 8px 0;
+}
+
+.add__item__modal-radio_input {
+  accent-color: black;
+}
+
+.add__item__modal-radio_label {
+  margin-left: 11px;
+}
