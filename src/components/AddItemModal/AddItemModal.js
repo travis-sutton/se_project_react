@@ -1,5 +1,3 @@
-import "./AddItemModal.css";
-
 const AddItemModal = () => {
   return (
     <div>

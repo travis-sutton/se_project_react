@@ -1,4 +1,3 @@
-import "./ModalWithForm.css";
 import closeButtonImage from "../../images/modal-close-button.png";
 
 const ModalWithForm = ({

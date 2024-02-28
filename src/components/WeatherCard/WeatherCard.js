@@ -1,5 +1,3 @@
-import "./WeatherCard.css";
-
 const weatherOptions = [
   // DAY WEATHER CONDITIONS
   {

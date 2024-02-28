@@ -1,4 +1,11 @@
+@import "./components/AddItemModal/AddItemModal.css";
 @import "./components/App/App.css";
+@import "./components/Footer/Footer.css";
+@import "./components/Header/Header.css";
+@import "./components/ItemCard/ItemCard.css";
+@import "./components/ItemModal/ItemModal.css";
+@import "./components/ModalWithForm/ModalWithForm.css";
+@import "./components/WeatherCard/WeatherCard.css";
 
 * {
   margin: 0;

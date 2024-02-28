@@ -1,5 +1,3 @@
-import "./Header.css";
-
 const Header = ({ onCreateModal }) => {
   const getCurrentDate = () => {
     const currentDate = new Date();
