@@ -55,4 +55,6 @@ const ItemCard = ({ item, onSelectCard }) => {
   );
 };
 
-export { itemCardArray, ItemCard };
+export { itemCardArray };
+
+export default ItemCard;

@@ -1,5 +1,6 @@
 import WeatherCard from "../WeatherCard/WeatherCard";
-import { itemCardArray, ItemCard } from "../ItemCard/ItemCard";
+import ItemCard from "../ItemCard/ItemCard";
+import { itemCardArray } from "../ItemCard/ItemCard";
 import { useMemo } from "react";
 
 function Main({ weatherTemp, onSelectCard }) {
