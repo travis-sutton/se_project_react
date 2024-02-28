@@ -8,7 +8,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 
 import "./App.css";
-import { getForecastWeather, parseWeatherData } from "../utils/weatherApi";
+import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 
 ///// App /////
 
