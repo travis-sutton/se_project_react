@@ -1,10 +1,9 @@
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import { itemCardArray } from "../ItemCard/ItemCard";
-import { useMemo } from "react";
+import { itemCardArray } from "../../utils/constants";
 
 function Main({ weatherTemp, onSelectCard }) {
-  const weatherType = useMemo(() => {
+  const getWeatherType = () => {
     if (weatherTemp >= 86) {
       return "hot";
     } else if (weatherTemp >= 66 && weatherTemp <= 85) {
@@ -12,7 +11,9 @@ function Main({ weatherTemp, onSelectCard }) {
     } else if (weatherTemp <= 65) {
       return "cold";
     }
-  }, [weatherTemp]);
+  };
+
+  const weatherType = getWeatherType();
 
   const filteredCards = itemCardArray.filter((item) => {
     return item.weather.toLowerCase() === weatherType;

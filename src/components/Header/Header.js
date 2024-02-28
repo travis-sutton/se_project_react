@@ -1,4 +1,6 @@
 import "./Header.css";
+import headerLogoImage from "../../images/logo.svg";
+import avatarImage from "../../images/avatar.svg";
 
 const Header = ({ onCreateModal }) => {
   const getCurrentDate = () => {
@@ -13,7 +15,7 @@ const Header = ({ onCreateModal }) => {
         <div>
           <img
             className="header__logo_img"
-            src={require("../../images/logo.svg").default}
+            src={headerLogoImage}
             alt="logo"
           ></img>
         </div>
@@ -32,11 +34,7 @@ const Header = ({ onCreateModal }) => {
         </div>
         <div>Terrence Tegegne</div>
         <div>
-          <img
-            src={require("../../images/avatar.svg").default}
-            alt="avatar"
-            className="avatar-pic"
-          ></img>
+          <img src={avatarImage} alt="avatar" className="avatar-pic"></img>
         </div>
       </div>
     </header>
