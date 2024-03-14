@@ -23,8 +23,5 @@ p {
 
 .add__item__modal-radio_input {
   accent-color: black;
-}
-
-.add__item__modal-radio_label {
-  margin-left: 11px;
+  margin-right: 11px;
 }

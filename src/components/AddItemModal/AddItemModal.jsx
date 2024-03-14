@@ -64,37 +64,43 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
 
         <div>
           <div className="add__item__modal-radio">
-            <input
-              name="temp"
-              type="radio"
-              className="add__item__modal-radio_input"
-              id="hot"
-              value="hot"
-              onChange={handleWeatherChange}
-            />
-            <label className="add__item__modal-radio_label">Hot</label>
+            <label className="add__item__modal-radio_label">
+              <input
+                name="temp"
+                type="radio"
+                className="add__item__modal-radio_input"
+                id="hot"
+                value="hot"
+                onChange={handleWeatherChange}
+              />
+              Hot
+            </label>
           </div>
           <div className="add__item__modal-radio">
-            <input
-              name="temp"
-              type="radio"
-              className="add__item__modal-radio_input"
-              id="warm"
-              value="warm"
-              onChange={handleWeatherChange}
-            />
-            <label className="add__item__modal-radio_label">Warm</label>
+            <label className="add__item__modal-radio_label">
+              <input
+                name="temp"
+                type="radio"
+                className="add__item__modal-radio_input"
+                id="warm"
+                value="warm"
+                onChange={handleWeatherChange}
+              />
+              Warm
+            </label>
           </div>
           <div className="add__item__modal-radio">
-            <input
-              name="temp"
-              type="radio"
-              className="add__item__modal-radio_input"
-              id="cold"
-              value="cold"
-              onChange={handleWeatherChange}
-            />
-            <label className="add__item__modal-radio_label">Cold</label>
+            <label className="add__item__modal-radio_label">
+              <input
+                name="temp"
+                type="radio"
+                className="add__item__modal-radio_input"
+                id="cold"
+                value="cold"
+                onChange={handleWeatherChange}
+              />
+              Cold
+            </label>
           </div>
         </div>
       </div>
