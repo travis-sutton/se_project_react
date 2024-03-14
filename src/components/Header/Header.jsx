@@ -6,23 +6,26 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  getLocationData,
+  getForecastWeather,
+  parseWeatherData,
   parseLocationData,
-  APIkey,
-  coordinates,
 } from "../../utils/weatherApi";
 
 const Header = ({ onCreateModal }) => {
   const [locationName, setLocationName] = useState("");
+  const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
-    getLocationData(coordinates, APIkey)
+    getForecastWeather()
       .then((data) => {
-        const parsedLocationName = parseLocationData(data);
-        setLocationName(parsedLocationName);
+        const parsedWeatherData = parseWeatherData(data);
+        setWeatherData(parsedWeatherData);
+
+        const cityName = parseLocationData(data);
+        setLocationName(cityName);
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.error("Error fetching weather data:", error);
       });
   }, []);
 

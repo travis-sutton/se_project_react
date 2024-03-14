@@ -12,7 +12,11 @@ import Profile from "../Profile/Profile";
 import { api } from "../../utils/api";
 import useEscape from "../hooks/useEscape";
 
-import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
+import {
+  getForecastWeather,
+  parseWeatherData,
+  parseLocationData,
+} from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 ///// App /////
@@ -71,6 +75,9 @@ function App() {
       .then((data) => {
         const weatherData = parseWeatherData(data);
         setTemp(weatherData.temperature);
+
+        const locationName = parseLocationData(data);
+        console.log(locationName);
       })
       .catch((error) => {
         console.error("Error:", error);
