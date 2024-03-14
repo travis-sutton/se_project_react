@@ -12,15 +12,16 @@ The application makes a call to a weather API, which then responds with the dail
 
 Currently the project is able to fetch the temperature data, and recommend clothing. The user can also see preview images of the item cards.
 
+The User can add and delete personal clothing items, and set the temperature to associate them with!
+
 Future features includes:
 -Customizing the User Avatar
 -Changing the weather card based on time of day and temperature
 -Fetch the user's locale instead of a pre-fixed coordinate
--Allow the user to add items
 -More!
 
 ## Links
 
-- [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
+- [Figma Design](https://www.figma.com/file/JELwiE1GnlYDgJTcphpJOH/Sprint-11%3A-WTWR?type=design&node-id=311-433&mode=design&t=2lzilF0uGAP7CVVX-0)
 
 - [API used](https://openweathermap.org/api)

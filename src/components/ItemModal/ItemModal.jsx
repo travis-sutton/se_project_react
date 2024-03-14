@@ -2,7 +2,7 @@ import "./ItemModal.css";
 
 import closeButtonImage from "../../images/modal-close-button-transparent.png";
 
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ selectedCard, onClose, handleCardDelete }) => {
   return (
     <div className={`modal`}>
       <div className="modal__content modal__content-item">
@@ -17,7 +17,7 @@ const ItemModal = ({ selectedCard, onClose }) => {
             alt="Close"
           />
         </button>
-        <img className="item__modal_image" src={selectedCard.link} />
+        <img className="item__modal_image" src={selectedCard.imageUrl} />
         <div className="item__modal_text_container">
           <div className="item__modal_name">{selectedCard.name}</div>
           <div>
@@ -25,6 +25,13 @@ const ItemModal = ({ selectedCard, onClose }) => {
             {selectedCard.weather.charAt(0).toUpperCase() +
               selectedCard.weather.slice(1)}
           </div>
+          <button
+            type="submit"
+            className="item__modal_delete_button"
+            onClick={() => handleCardDelete(selectedCard)}
+          >
+            Delete Item
+          </button>
         </div>
       </div>
     </div>

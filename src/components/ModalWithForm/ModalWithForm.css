@@ -35,7 +35,7 @@
   border: none;
 }
 
-.modal__submit_button {
+.add__garment_submit_button-disabled {
   border: none;
   background-color: #fff;
   cursor: pointer;
@@ -49,6 +49,6 @@
   height: 36px;
 }
 
-.modal__submit_button:hover {
+.add__garment_submit_button-disabled:hover {
   background-image: url(../../images/add-garment-hover.png);
 }

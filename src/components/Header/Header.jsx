@@ -1,6 +1,9 @@
 import "./Header.css";
 import headerLogoImage from "../../images/logo.svg";
 import avatarImage from "../../images/avatar.svg";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+
+import { Link } from "react-router-dom";
 
 const Header = ({ onCreateModal }) => {
   const getCurrentDate = () => {
@@ -13,16 +16,19 @@ const Header = ({ onCreateModal }) => {
     <header className="header">
       <div className="header__logo">
         <div>
-          <img
-            className="header__logo_img"
-            src={headerLogoImage}
-            alt="logo"
-          ></img>
+          <Link to="/">
+            <img
+              className="header__logo_img"
+              src={headerLogoImage}
+              alt="logo"
+            ></img>
+          </Link>
         </div>
-        <div>{getCurrentDate()}, Nashville, TN</div>
+        <div>{getCurrentDate()}, Nashville</div>
       </div>
 
       <div className="header__avatar-logo">
+        <ToggleSwitch />
         <div>
           <button
             className="header__add-clothes-button"
@@ -32,9 +38,13 @@ const Header = ({ onCreateModal }) => {
             + Add Clothes
           </button>
         </div>
-        <div>Terrence Tegegne</div>
+
+        <Link className="header__link" to="/profile">
+          <div className="header__user_profile">Terrence Tegegne</div>
+        </Link>
+
         <div>
-          <img src={avatarImage} alt="avatar" className="avatar-pic"></img>
+          <img src={avatarImage} alt="avatar" className="avatar__pic"></img>
         </div>
       </div>
     </header>

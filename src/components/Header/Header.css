@@ -15,6 +15,7 @@
 
 .header__logo_img {
   height: 50px;
+  cursor: pointer;
 }
 
 .header__avatar-logo {
@@ -31,5 +32,15 @@
   padding: 0;
   margin: 0;
 
+  cursor: pointer;
+}
+
+.header__link {
+  text-decoration: none;
+  color: black;
+}
+
+.header__user_profile {
+  user-select: none;
   cursor: pointer;
 }

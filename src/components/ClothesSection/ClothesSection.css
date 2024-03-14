@@ -1,0 +1,29 @@
+.clothes__section {
+}
+
+.clothes__section_text-container {
+  margin-left: 180px;
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.clothes__section-title {
+  margin: 0;
+  margin-right: 20px;
+}
+
+.clothes__section-add_button {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border: none;
+  color: grey;
+  cursor: pointer;
+}
+
+.clothes__section-add_button:hover {
+  color: black;
+}
+
+.clothes__section-items {
+}

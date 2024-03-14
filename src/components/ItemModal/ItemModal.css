@@ -25,9 +25,21 @@
 }
 
 .item__modal_text_container {
+  position: relative;
   margin: 20px 32px 32px;
+  user-select: none;
 }
 
 .item__modal_name {
   margin-bottom: 12px;
+}
+
+.item__modal_delete_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: orange;
+  cursor: pointer;
+  background-color: white;
+  border: none;
 }
