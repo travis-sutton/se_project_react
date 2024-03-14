@@ -44,11 +44,11 @@
 }
 
 .switch__temp-F {
-  top: 4px;
+  top: -20px;
   left: 8px;
 }
 
 .switch__temp-C {
-  top: 4px;
+  top: -20px;
   right: 8px;
 }
