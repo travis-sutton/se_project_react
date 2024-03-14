@@ -12,19 +12,17 @@
   margin-top: 8px;
 }
 
-p {
+.add__item__modal-weather_text {
   margin-top: 24px;
-  margin-bottom: 4px;
-}
-
-.add__item__modal-radio {
-  margin: 8px 11px 8px 0;
+  margin-bottom: 12px;
 }
 
 .add__item__modal-radio_input {
   accent-color: black;
+  margin-right: 11px;
 }
 
 .add__item__modal-radio_label {
-  margin-left: 11px;
+  display: block;
+  margin-bottom: 8px;
 }

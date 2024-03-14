@@ -1,27 +1,24 @@
 import "./AddItemModal.css";
 import React from "react";
-import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
-  const [name, setName] = useState("");
-  const [weather, setWeather] = useState("");
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
+import { useForm } from "../hooks/useForm";
+import { useState } from "react";
 
-  const [link, setUrl] = useState("");
-  const handleUrlChange = (e) => {
-    setUrl(e.target.value);
-  };
+const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
+  const { values, handleChange } = useForm({
+    name: "",
+    weather: "",
+    imageUrl: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, weather, imageUrl: link });
-  };
-
-  const handleWeatherChange = (e) => {
-    setWeather(e.target.value);
+    onAddItem({
+      name: values.name,
+      weather: values.weather,
+      imageUrl: values.imageUrl,
+    });
   };
 
   return (
@@ -42,8 +39,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             placeholder="Name"
             minLength="1"
             maxLength="30"
-            value={name}
-            onChange={handleNameChange}
+            value={values.name}
+            onChange={handleChange}
           />
         </label>
 
@@ -51,50 +48,54 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           Image
           <input
             type="url"
-            name="Link"
+            name="imageUrl"
             className="add__item__modal-input"
             placeholder="Image URL"
-            value={link}
-            onChange={handleUrlChange}
+            value={values.imageUrl}
+            onChange={handleChange}
           />
         </label>
 
-        <p>Select the weather type:</p>
+        <p className="add__item__modal-weather_text">
+          Select the weather type:
+        </p>
 
-        <div>
-          <div className="add__item__modal-radio">
+        <div className="add__item__modal-radio">
+          <label className="add__item__modal-radio_label">
             <input
               name="temp"
               type="radio"
               className="add__item__modal-radio_input"
               id="hot"
               value="hot"
-              onChange={handleWeatherChange}
+              onChange={handleChange}
             />
-            <label className="add__item__modal-radio_label">Hot</label>
-          </div>
-          <div className="add__item__modal-radio">
+            Hot
+          </label>
+
+          <label className="add__item__modal-radio_label">
             <input
               name="temp"
               type="radio"
               className="add__item__modal-radio_input"
               id="warm"
               value="warm"
-              onChange={handleWeatherChange}
+              onChange={handleChange}
             />
-            <label className="add__item__modal-radio_label">Warm</label>
-          </div>
-          <div className="add__item__modal-radio">
+            Warm
+          </label>
+
+          <label className="add__item__modal-radio_label">
             <input
               name="temp"
               type="radio"
               className="add__item__modal-radio_input"
               id="cold"
               value="cold"
-              onChange={handleWeatherChange}
+              onChange={handleChange}
             />
-            <label className="add__item__modal-radio_label">Cold</label>
-          </div>
+            Cold
+          </label>
         </div>
       </div>
     </ModalWithForm>

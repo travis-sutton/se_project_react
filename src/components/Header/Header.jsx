@@ -3,9 +3,29 @@ import headerLogoImage from "../../images/logo.svg";
 import avatarImage from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {
+  getLocationData,
+  parseLocationData,
+  APIkey,
+  coordinates,
+} from "../../utils/weatherApi";
 
 const Header = ({ onCreateModal }) => {
+  const [locationName, setLocationName] = useState("");
+
+  useEffect(() => {
+    getLocationData(coordinates, APIkey)
+      .then((data) => {
+        const parsedLocationName = parseLocationData(data);
+        setLocationName(parsedLocationName);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+
   const getCurrentDate = () => {
     const currentDate = new Date();
     const options = { month: "long", day: "numeric" };
@@ -24,7 +44,9 @@ const Header = ({ onCreateModal }) => {
             ></img>
           </Link>
         </div>
-        <div>{getCurrentDate()}, Nashville</div>
+        <div>
+          {getCurrentDate()}, {locationName}
+        </div>
       </div>
 
       <div className="header__avatar-logo">
@@ -40,7 +62,7 @@ const Header = ({ onCreateModal }) => {
         </div>
 
         <Link className="header__link" to="/profile">
-          <div className="header__user_profile">Terrence Tegegne</div>
+          <p className="header__user_profile">Terrence Tegegne</p>
         </Link>
 
         <div>

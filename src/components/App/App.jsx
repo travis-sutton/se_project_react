@@ -9,10 +9,11 @@ import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
-import api from "../../utils/api";
+import { api } from "../../utils/api";
+import useEscape from "../hooks/useEscape";
 
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext"
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 ///// App /////
 
@@ -30,6 +31,8 @@ function App() {
   const handleCloseModal = () => {
     setActiveModal("");
   };
+
+  useEscape(activeModal, handleCloseModal);
 
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
@@ -85,54 +88,52 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <Header onCreateModal={handleCreateModal} />
+    <CurrentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+    >
+      <Header onCreateModal={handleCreateModal} />
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                weatherTemp={{ temperature: temp }}
-                onSelectCard={handleSelectedCard}
-                clothingItems={clothingItems}
-              />
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <Profile
-                onSelectCard={handleSelectedCard}
-                clothingItems={clothingItems}
-                onCreateModal={handleCreateModal}
-              />
-            }
-          />
-        </Routes>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Main
+              weatherTemp={{ temperature: temp }}
+              onSelectCard={handleSelectedCard}
+              clothingItems={clothingItems}
+            />
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              onSelectCard={handleSelectedCard}
+              clothingItems={clothingItems}
+              onCreateModal={handleCreateModal}
+            />
+          }
+        />
+      </Routes>
 
-        <Footer />
+      <Footer />
 
-        {activeModal === "create" && (
-          <AddItemModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "create"}
-            onAddItem={handleAddItemSubmit}
-          />
-        )}
+      {activeModal === "create" && (
+        <AddItemModal
+          handleCloseModal={handleCloseModal}
+          isOpen={activeModal === "create"}
+          onAddItem={handleAddItemSubmit}
+        />
+      )}
 
-        {activeModal === "preview" && (
-          <ItemModal
-            selectedCard={selectedCard}
-            onClose={handleCloseModal}
-            handleCardDelete={handleCardDelete}
-          />
-        )}
-      </CurrentTemperatureUnitContext.Provider>
-    </div>
+      {activeModal === "preview" && (
+        <ItemModal
+          selectedCard={selectedCard}
+          onClose={handleCloseModal}
+          handleCardDelete={handleCardDelete}
+        />
+      )}
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 

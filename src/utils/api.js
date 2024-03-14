@@ -1,20 +1,24 @@
 const BASE_URL = "http://localhost:3001";
 
-const handleServerResponse = (res) => {
+export const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
-const api = {
+function request(url, options) {
+  return fetch(url, options).then(handleServerResponse);
+}
+
+export const api = {
   getItemList: () => {
-    return fetch(`${BASE_URL}/items`, {
+    return request(`${BASE_URL}/items`, {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(handleServerResponse);
+    });
   },
 
   addItem: ({ name, weather, imageUrl }) => {
-    return fetch(`${BASE_URL}/items`, {
+    return request(`${BASE_URL}/items`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,17 +28,15 @@ const api = {
         weather,
         imageUrl,
       }),
-    }).then(handleServerResponse);
+    });
   },
 
   deleteItem: (id) => {
-    return fetch(`${BASE_URL}/items/${id}`, {
+    return request(`${BASE_URL}/items/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(handleServerResponse);
+    });
   },
 };
-
-export default api;
