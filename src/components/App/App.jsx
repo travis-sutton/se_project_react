@@ -10,7 +10,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { api } from "../../utils/api";
-import useEscape from "../hooks/useEscape";
+import useEscape from "../../hooks/useEscape";
 
 import {
   getForecastWeather,
@@ -27,6 +27,7 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [locationName, setLocationName] = useState("");
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -77,6 +78,7 @@ function App() {
         setTemp(weatherData.temperature);
 
         const locationName = parseLocationData(data);
+        setLocationName(locationName);
         console.log(locationName);
       })
       .catch((error) => {
@@ -98,7 +100,7 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <Header onCreateModal={handleCreateModal} />
+      <Header onCreateModal={handleCreateModal} locationName={locationName} />
 
       <Routes>
         <Route

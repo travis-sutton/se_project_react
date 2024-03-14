@@ -3,32 +3,9 @@ import headerLogoImage from "../../images/logo.svg";
 import avatarImage from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  getForecastWeather,
-  parseWeatherData,
-  parseLocationData,
-} from "../../utils/weatherApi";
 
-const Header = ({ onCreateModal }) => {
-  const [locationName, setLocationName] = useState("");
-  const [weatherData, setWeatherData] = useState(null);
-
-  useEffect(() => {
-    getForecastWeather()
-      .then((data) => {
-        const parsedWeatherData = parseWeatherData(data);
-        setWeatherData(parsedWeatherData);
-
-        const cityName = parseLocationData(data);
-        setLocationName(cityName);
-      })
-      .catch((error) => {
-        console.error("Error fetching weather data:", error);
-      });
-  }, []);
-
+const Header = ({ onCreateModal, locationName }) => {
   const getCurrentDate = () => {
     const currentDate = new Date();
     const options = { month: "long", day: "numeric" };
