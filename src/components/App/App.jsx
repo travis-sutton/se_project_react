@@ -12,7 +12,7 @@ import Profile from "../Profile/Profile";
 import api from "../../utils/api";
 
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
-import { CurrentTemperatureUnitContext } from "../Contexts/CurrentTemperatureUnitContext";
+import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 
 ///// App /////
 

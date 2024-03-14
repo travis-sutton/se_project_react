@@ -20,6 +20,10 @@ Future features includes:
 -Fetch the user's locale instead of a pre-fixed coordinate
 -More!
 
+## Mock Server
+
+<!-- json-server --watch db.json --id _id --port 3001 -->
+
 ## Links
 
 - [Figma Design](https://www.figma.com/file/JELwiE1GnlYDgJTcphpJOH/Sprint-11%3A-WTWR?type=design&node-id=311-433&mode=design&t=2lzilF0uGAP7CVVX-0)
