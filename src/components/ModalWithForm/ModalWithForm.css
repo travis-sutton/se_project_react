@@ -26,13 +26,18 @@
 .modal__header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
-.modal__close_button {
-  cursor: pointer;
-  height: 20px;
-  width: 20px;
+.modal__close_button-form {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  height: 10px;
+  width: 10px;
   border: none;
+  cursor: pointer;
 }
 
 .add__garment_submit_button-disabled {

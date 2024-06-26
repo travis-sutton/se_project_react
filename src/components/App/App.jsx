@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "../Header/Header";
@@ -79,7 +79,6 @@ function App() {
 
         const locationName = parseLocationData(data);
         setLocationName(locationName);
-        console.log(locationName);
       })
       .catch((error) => {
         console.error("Error:", error);

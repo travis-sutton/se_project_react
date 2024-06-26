@@ -16,7 +16,7 @@ function ClothesSection({ onSelectCard, clothingItems, onCreateModal }) {
         </button>
       </div>
       <div>
-        <ul className="clothes__section-items card_items">
+        <ul className="clothes__section-card_items">
           {clothingItems.map((item) => (
             <ItemCard key={item._id} item={item} onSelectCard={onSelectCard} />
           ))}

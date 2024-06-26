@@ -1,8 +1,5 @@
-.clothes__section {
-}
-
 .clothes__section_text-container {
-  margin-left: 180px;
+  margin-left: 175px;
   margin-bottom: 16px;
   display: flex;
 }
@@ -25,5 +22,10 @@
   color: black;
 }
 
-.clothes__section-items {
+.clothes__section-card_items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  justify-content: center;
 }
