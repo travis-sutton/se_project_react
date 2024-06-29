@@ -1,5 +1,6 @@
 .profile {
   display: flex;
+  align-items: center;
 }
 
 .profile__sidebar {
@@ -7,4 +8,5 @@
 }
 
 .profile__clothing-section {
+  margin-top: 10px;
 }
