@@ -9,8 +9,15 @@ import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
+
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+
 import { api } from "../../utils/api";
 import useEscape from "../../hooks/useEscape";
+
+import { register, authorize, checkToken } from "../../utils/auth";
 
 import {
   getForecastWeather,
@@ -28,6 +35,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [locationName, setLocationName] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -69,6 +77,46 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
+
+  const handleRegister = ({ email, password, name, avatar }) => {
+    register(name, avatar, email, password)
+      .then((res) => {
+        if (res) {
+          handleAuthorize({ email, password });
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleAuthorize = ({ email, password }) => {
+    authorize(email, password)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
+          setLoggedIn(true);
+          handleCloseModal();
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setLoggedIn(false);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      checkToken(token)
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
 
   // Weather API - retrieves weather data
   useEffect(() => {
@@ -115,11 +163,13 @@ function App() {
         <Route
           path="/profile"
           element={
-            <Profile
-              onSelectCard={handleSelectedCard}
-              clothingItems={clothingItems}
-              onCreateModal={handleCreateModal}
-            />
+            <ProtectedRoute loggedIn={loggedIn}>
+              <Profile
+                onSelectCard={handleSelectedCard}
+                clothingItems={clothingItems}
+                onCreateModal={handleCreateModal}
+              />
+            </ProtectedRoute>
           }
         />
       </Routes>
@@ -140,6 +190,14 @@ function App() {
           onClose={handleCloseModal}
           handleCardDelete={handleCardDelete}
         />
+      )}
+
+      {activeModal === "register" && (
+        <RegisterModal onClose={handleCloseModal} onRegister={handleRegister} />
+      )}
+
+      {activeModal === "login" && (
+        <LoginModal onClose={handleCloseModal} onLogin={handleAuthorize} />
       )}
     </CurrentTemperatureUnitContext.Provider>
   );
