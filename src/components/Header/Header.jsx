@@ -1,11 +1,12 @@
 import "./Header.css";
+
 import headerLogoImage from "../../images/logo.svg";
 import avatarImage from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 import { Link } from "react-router-dom";
 
-const Header = ({ onCreateModal, locationName }) => {
+const Header = ({ onCreateModal, locationName, loggedIn, onRegisterModal }) => {
   const getCurrentDate = () => {
     const currentDate = new Date();
     const options = { month: "long", day: "numeric" };
@@ -31,20 +32,27 @@ const Header = ({ onCreateModal, locationName }) => {
 
       <div className="header__avatar-logo">
         <ToggleSwitch />
-        <div>
-          <button
-            className="header__add-clothes-button"
-            type="text"
-            onClick={onCreateModal}
-          >
-            + Add Clothes
-          </button>
-        </div>
+
+        {loggedIn && (
+          <div>
+            <button
+              className="header__add-clothes-button"
+              type="text"
+              onClick={onCreateModal}
+            >
+              + Add Clothes
+            </button>
+          </div>
+        )}
 
         <Link className="header__link" to="/profile">
-          <p className="header__user_profile">Terrence Tegegne</p>
+          <button
+            className="header__user_profile-button"
+            onClick={onRegisterModal}
+          >
+            Sign Up
+          </button>
         </Link>
-
         <div>
           <img src={avatarImage} alt="avatar" className="avatar__pic"></img>
         </div>

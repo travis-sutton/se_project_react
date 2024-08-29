@@ -40,8 +40,10 @@
   color: black;
 }
 
-.header__user_profile {
+.header__user_profile-button {
   user-select: none;
   cursor: pointer;
   margin: 0;
+  border: none;
+  background-color: white;
 }

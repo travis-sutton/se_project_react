@@ -1,6 +1,7 @@
 import "./App.css";
 
 import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "../Header/Header";
@@ -9,16 +10,14 @@ import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
-
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-
-import { api } from "../../utils/api";
 import useEscape from "../../hooks/useEscape";
 
+import { api } from "../../utils/api";
 import { register, authorize, checkToken } from "../../utils/auth";
-
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import {
   getForecastWeather,
   parseWeatherData,
@@ -29,6 +28,8 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 ///// App /////
 
 function App() {
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -45,11 +46,13 @@ function App() {
     setActiveModal("");
   };
 
-  useEscape(activeModal, handleCloseModal);
-
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+  };
+
+  const handleRegisterModal = () => {
+    setActiveModal("register");
   };
 
   const handleToggleSwitchChange = () => {
@@ -78,6 +81,7 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  // ++++++++ UPDATE THIS ++++++++ \\
   const handleRegister = ({ email, password, name, avatar }) => {
     register(name, avatar, email, password)
       .then((res) => {
@@ -94,6 +98,7 @@ function App() {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
           setLoggedIn(true);
+          setCurrentUser(res.user);
           handleCloseModal();
         }
       })
@@ -103,7 +108,10 @@ function App() {
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
     setLoggedIn(false);
+    setCurrentUser(null);
   };
+
+  useEscape(activeModal, handleCloseModal);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -112,6 +120,7 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
+            setCurrentUser(res);
           }
         })
         .catch((err) => console.log(err));
@@ -147,7 +156,12 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <Header onCreateModal={handleCreateModal} locationName={locationName} />
+      <Header
+        onCreateModal={handleCreateModal}
+        locationName={locationName}
+        loggedIn={loggedIn}
+        onRegisterModal={handleRegisterModal}
+      />
 
       <Routes>
         <Route
