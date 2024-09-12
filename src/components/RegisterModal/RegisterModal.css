@@ -1,0 +1,28 @@
+/* 
+Temp style test
+*/
+
+.register__modal-input_label {
+  display: block;
+  margin-top: 24px;
+}
+
+.register__modal-input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 100%;
+  outline: none;
+  margin-top: 8px;
+}
+
+.register__modal-submit_button {
+  /* Placeholder until I code the actual button img in*/
+  height: 40px;
+  width: 100px;
+
+  margin-top: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+
+  cursor: pointer;
+}

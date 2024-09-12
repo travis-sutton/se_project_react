@@ -53,6 +53,7 @@
 // }
 
 // export default Main;
+
 import "./Main.css";
 
 import WeatherCard from "../WeatherCard/WeatherCard";
@@ -98,7 +99,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems, loggedIn }) {
       <section className="card_section" id="card-section">
         <div className="card_section_helper">
           {loggedIn
-            ? `Today is {temp}°{currentTemperatureUnit} / You may want to wear:`
+            ? `Today is ${temp}°${currentTemperatureUnit} / You may want to wear:`
             : "Sign Up to get Clothing Recommendations!"}
         </div>
         <div className="card_items">
